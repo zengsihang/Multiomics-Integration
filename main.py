@@ -20,3 +20,12 @@ sc.pp.neighbors(rna, metric="cosine")
 sc.tl.umap(rna)
 sc.pl.umap(rna, color="cell_type")
 plt.savefig("Chen-2019-RNA-UMAP.png")
+plt.close()
+
+scglue.data.lsi(atac, n_components=100, n_iter=15)
+sc.pp.neighbors(atac, use_rep="X_lsi", metric="cosine")
+sc.tl.umap(atac)
+sc.pl.umap(atac, color="cell_type")
+plt.savefig("Chen-2019-ATAC-UMAP.png")
+plt.close()
+
