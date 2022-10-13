@@ -29,3 +29,9 @@ sc.pl.umap(atac, color="cell_type")
 plt.savefig("Chen-2019-ATAC-UMAP.png")
 plt.close()
 
+print(rna.var.head())
+scglue.data.get_gene_annotation(
+    rna, gtf="../dataset/gencode.vM25.chr_patch_hapl_scaff.annotation.gtf.gz",
+    gtf_by="gene_name"
+)
+print(rna.var.loc[:, ["chrom", "chromStart", "chromEnd"]].head())
