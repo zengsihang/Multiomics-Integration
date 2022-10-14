@@ -5,8 +5,8 @@ import scglue
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
 
-rna = ad.read_h5ad("../dataset/Chen-2019-RNA.h5ad")
-atac = ad.read_h5ad("../dataset/Chen-2019-ATAC.h5ad")
+rna = ad.read_h5ad("./data/Chen-2019-RNA.h5ad")
+atac = ad.read_h5ad("./data/Chen-2019-ATAC.h5ad")
 print(rna)
 print(atac)
 
@@ -31,9 +31,27 @@ plt.close()
 
 print(rna.var.head())
 scglue.data.get_gene_annotation(
-    rna, gtf="../dataset/gencode.vM25.chr_patch_hapl_scaff.annotation.gtf.gz",
+    rna, gtf="./data/gencode.vM25.chr_patch_hapl_scaff.annotation.gtf.gz",
     gtf_by="gene_name"
 )
 print(rna.var.loc[:, ["chrom", "chromStart", "chromEnd"]].head())
 
 print(atac.var_names[:5])
+
+split = atac.var_names.str.split(r"[:-]")
+atac.var["chrom"] = split.map(lambda x: x[0])
+atac.var["chromStart"] = split.map(lambda x: x[1]).astype(int)
+atac.var["chromEnd"] = split.map(lambda x: x[2]).astype(int)
+print(atac.var.head())
+
+guidance = scglue.genomics.rna_anchored_guidance_graph(rna, atac)
+print(guidance)
+
+scglue.graph.check_graph(guidance, [rna, atac])
+
+print(atac.var.head())
+
+rna.write("./data/rna-pp.h5ad", compression="gzip")
+atac.write("./data/atac-pp.h5ad", compression="gzip")
+nx.write_graphml(guidance, "./data/guidance.graphml.gz")
+
