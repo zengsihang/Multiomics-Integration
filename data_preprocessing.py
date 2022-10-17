@@ -36,6 +36,7 @@ scglue.data.get_gene_annotation(
 )
 print(rna.var.loc[:, ["chrom", "chromStart", "chromEnd"]].head())
 print(rna.var.head())
+print(rna.var.columns)
 
 print(atac.var_names[:5])
 
