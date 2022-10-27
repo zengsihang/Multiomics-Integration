@@ -9,6 +9,10 @@ Course project of Computational Biology
 `wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/gencode.vM25.chr_patch_hapl_scaff.annotation.gtf.gz`
 
 ## run codes
+
+
+`python setup.py develop  # Build scglue`
+
 `python data_preprocessing.py`
 
 `python train.py`
