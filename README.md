@@ -1,5 +1,5 @@
 # Multiomics-Integration
-Course project of Computational Biology
+Course project of Computational Biology.
 
 ## Download data
 `wget http://download.gao-lab.org/GLUE/tutorial/Chen-2019-RNA.h5ad`
@@ -16,3 +16,7 @@ Course project of Computational Biology
 `python data_preprocessing.py`
 
 `python train.py`
+
+
+## Reference
+The project is based on <https://github.com/gao-lab/GLUE>
