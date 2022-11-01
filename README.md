@@ -8,6 +8,9 @@ Course project of Computational Biology.
 
 `wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/gencode.vM25.chr_patch_hapl_scaff.annotation.gtf.gz`
 
+## Dependency
+`pip install torch-scatter`
+
 ## run codes
 
 
