@@ -52,7 +52,7 @@ genes = scglue.genomics.Bed(rna.var.assign(name=rna.var_names))
 peaks = scglue.genomics.Bed(atac.var.assign(name=atac.var_names))
 tss = genes.strand_specific_start_site()
 promoters = tss.expand(2000, 0)
-dist_graph = scglue.genomics.window_graph(
+guidance = scglue.genomics.window_graph(
     promoters, peaks, 150000,
     attr_fn=lambda l, r, d: {
         "dist": abs(d),
