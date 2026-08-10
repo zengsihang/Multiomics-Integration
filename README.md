@@ -1,7 +1,12 @@
+
+</think>
+
 # Multiomics-Integration
 Course project of Computational Biology.
 
 ## Download data
+Place the following files in the `data/` directory:
+
 `wget http://download.gao-lab.org/GLUE/tutorial/Chen-2019-RNA.h5ad`
 
 `wget http://download.gao-lab.org/GLUE/tutorial/Chen-2019-ATAC.h5ad`
